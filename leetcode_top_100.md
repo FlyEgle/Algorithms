@@ -94,3 +94,89 @@ class Solution:
         else:
             return False 
 ```
+
+#### 21. 合并两个有序链表
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dumpy = p = ListNode(0)
+        p1, p2 = list1, list2 
+        while p1 is not None and p2 is not None :
+            if p1.val < p2.val :
+                p.next = p1
+                p1 = p1.next 
+            else:
+                p.next = p2
+                p2 = p2.next 
+            
+            p = p.next
+
+        if p1 is not None:
+            p.next = p1
+        
+        if p2 is not None :
+            p.next = p2
+
+        return dumpy.next
+```
+
+####  160. 相交链表
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        a = headA 
+        b = headB 
+
+        while a != b:
+            a = a.next if a else headB
+            b = b.next if b else headA
+        return a 
+```
+
+#### 704. 二分查找
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums)-1
+        while(l <= r):
+            mid = (l + r) // 2
+            if nums[mid] == target:
+                return mid 
+            elif nums[mid] < target:
+                l = mid +1
+            elif nums[mid] > target:
+                r = mid -1
+        return -1
+```
+
+#### 206. 反转链表
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        pre = None 
+        cur = head 
+
+        while cur:
+            tmp = cur.next
+            cur.next = pre 
+            pre = cur 
+            cur = tmp 
+        
+        return pre 
+```
