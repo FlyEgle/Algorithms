@@ -180,3 +180,386 @@ class Solution:
         
         return pre 
 ```
+
+#### 141. 环形链表
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        if head is None or head.next is None:
+            return False 
+        
+        slow = head 
+        fast = head.next 
+        while(slow != fast):
+            if fast is None or fast.next is None:
+                return False 
+            fast = fast.next.next
+            slow = slow.next
+        return True 
+```
+
+#### 94. 二叉树中序遍历
+```python
+# 递归解法
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return [] 
+        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+
+# 迭代解法
+class Solution:
+    def inorderTraversal(self, root:TreeNode)->List[int]:
+        res = []
+        stack = []
+        cur = root 
+        while stack or cur:
+            while cur:
+                stack.append(cur)
+                cur = cur.left 
+            cur = stack.pop()
+            res.append(cur.val)
+            cur = cur.right
+        return res
+```
+
+#### 斐波那契数列迭代法
+```python
+class Solution:
+    def fib(self, n: int) -> int:
+        MOD = 10 ** 9 + 7
+        if n < 2:
+            return n
+        p, q, r = 0, 0, 1
+        for i in range(2, n + 1):
+            p = q
+            q = r
+            r = (p + q) % MOD
+        return r
+```
+
+#### 剑指 Offer 22. 链表中倒数第k个节点
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def getKthFromEnd(self, head: ListNode, k: int) -> ListNode:
+        # 快慢指针
+        slow, fast = head, head 
+        while k:
+            fast = fast.next 
+            k-=1
+        
+        while fast:
+            slow = slow.next 
+            fast = fast.next 
+
+        return slow
+```
+
+#### 88. 合并两个有序数组
+```python
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i = m +n - 1
+        while (i>=0):
+            if (m - 1) >=0 and (n-1) >= 0:
+                if nums1[m-1] > nums2[n-1]:
+                    nums1[i] = nums1[m-1]
+                    m -= 1
+                else:
+                    nums1[i] = nums2[n-1]
+                    n -= 1
+            elif m-1 < 0:
+                nums1[i] = nums2[n-1]
+                n -= 1
+            elif n - 1< 0:
+                nums1[i] = nums1[m-1]
+                m -=1 
+            i-=1
+```
+#### 53.最大子数组和
+```python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        dp = [0 for _ in range(len(nums))]
+        dp[0] = nums[0]
+        for i in range(1, len(nums)):
+            dp[i] = max(dp[i-1] + nums[i], nums[i])
+        
+        res = -inf 
+        for i in range(len(nums)):
+            res = max(res, dp[i])
+
+        return res 
+```
+
+#### 226. 翻转二叉树
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        # 中序遍历，改left和right
+        if not root:
+            return None
+        root.left, root.right = root.right, root.left
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root 
+```
+#### 快速排序
+```python
+def partition(arr: List[int], low: int, high: int):
+    pivot, j = arr[low], low
+    for i in range(low + 1, high + 1):
+        if arr[i] <= pivot:
+            j += 1
+            arr[j], arr[i] = arr[i], arr[j]
+    arr[low], arr[j] = arr[j], arr[low]
+    return j 
+
+def quick_sort_between(arr: List[int], low: int, high: int):
+    if high-low <= 1: # 递归结束条件
+        return
+
+    m = partition(arr, low, high)  # arr[m] 作为划分标准
+    quick_sort_between(arr, low, m - 1)
+    quick_sort_between(arr, m + 1, high)
+
+def quick_sort(arr:List[int]):
+    """
+    快速排序(in-place)
+    :param arr: 待排序的List
+    :return: 快速排序是就地排序(in-place)
+    """
+    quick_sort_between(arr,0, len(arr) - 1)
+```
+
+```python
+def quick_sort(lists,i,j):
+    if i >= j:
+        return lists
+    pivot = lists[i]
+    low = i
+    high = j
+    while i < j:
+        while i < j and lists[j] >= pivot:
+            j -= 1
+        lists[i]=lists[j]
+        while i < j and lists[i] <=pivot:
+            i += 1
+        lists[j]=lists[i]
+    lists[j] = pivot
+    
+    quick_sort(lists,low,i-1)
+    quick_sort(lists,i+1,high)
+    return lists
+```
+
+#### 15. 三数之和
+```python
+class Solution:
+    def threeSum(self, nums: [int]) -> [[int]]:
+        nums.sort()
+        res, k = [], 0
+        for k in range(len(nums) - 2):
+            if nums[k] > 0: break # 1. because of j > i > k.
+            if k > 0 and nums[k] == nums[k - 1]: continue # 2. skip the same `nums[k]`.
+            i, j = k + 1, len(nums) - 1
+            while i < j: # 3. double pointer
+                s = nums[k] + nums[i] + nums[j]
+                if s < 0:
+                    i += 1
+                    while i < j and nums[i] == nums[i - 1]: i += 1
+                elif s > 0:
+                    j -= 1
+                    while i < j and nums[j] == nums[j + 1]: j -= 1
+                else:
+                    res.append([nums[k], nums[i], nums[j]])
+                    i += 1
+                    j -= 1
+                    while i < j and nums[i] == nums[i - 1]: i += 1
+                    while i < j and nums[j] == nums[j + 1]: j -= 1
+        return res
+
+```
+
+#### 二叉树层序遍历
+
+##### BFS
+```python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        queue = collections.deque()
+        queue.append(root)
+        res = []
+        while queue:
+            size = len(queue)
+            level = []
+            for _ in range(size):
+                cur = queue.popleft()
+                if not cur:
+                    continue
+                level.append(cur.val)
+                queue.append(cur.left)
+                queue.append(cur.right)
+            if level:
+                res.append(level)
+        return res
+
+```
+
+##### DFS
+```python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        res = []
+        self.level(root, 0, res)
+        return res
+
+    def level(self, root, level, res):
+        if not root: 
+            return
+        if len(res) == level: 
+            res.append([])
+        
+        res[level].append(root.val)
+        if root.left: 
+            self.level(root.left, level + 1, res)
+        if root.right: 
+            self.level(root.right, level + 1, res)
+```
+
+#### Offer II 004. 只出现一次的数字 
+```python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        hash_map = dict()
+        for num in nums:
+            if num not in hash_map:
+                hash_map[num] = 1
+            else:
+                hash_map[num] += 1
+        
+        for k, v in hash_map.items():
+            if v == 1:
+                return k
+```
+
+#### 14. 最长公共前缀
+```python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs:
+            return ""
+        res = strs[0]
+        i = 1
+        while i < len(strs):
+            while strs[i].find(res) != 0:
+                res = res[0:len(res)-1]
+            i += 1
+        return res
+```
+
+#### 34. 在排序数组中查找元素的第一个和最后一个位置
+```python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if len(nums) < 1:
+            return [-1, -1]
+
+        if nums[0] > target or nums[-1] < target:
+            return [-1, -1]
+        
+        # 二分
+        left = 0
+        right = len(nums) -1
+        index = []
+        while (left <= right):
+            middle = (left + right) // 2
+            if nums[middle] == target:
+                left = middle 
+                right = middle 
+                while (left-1>=0 and nums[left-1] == target):
+                    left -= 1
+                
+                while (right+1<=len(nums)-1 and nums[right+1] == target):
+                    right += 1
+
+                index = [left, right]
+            elif nums[middle] > target:
+                right = middle - 1 
+
+            elif nums[middle] < target:
+                left = middle + 1
+
+        return index
+```
+
+#### 215. 数组中的第K个最大元素
+```python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        c = len(nums) - k
+        def quick_sort(l, r):
+            m = randint(l, r)
+            nums[l], nums[m] = nums[m], nums[l]
+            i, j = l, r
+            while i < j:
+                while i < j and nums[j] >= nums[l]: j -= 1
+                while i < j and nums[i] <= nums[l]: i += 1
+                nums[i], nums[j] = nums[j], nums[i]
+            nums[l], nums[i] = nums[i], nums[l]
+
+            if i > c: return quick_sort(l, i-1)
+            elif i < c: return quick_sort(i+1, r)
+            return nums[c]
+        return quick_sort(0, len(nums)-1)
+```
