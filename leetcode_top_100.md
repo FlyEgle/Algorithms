@@ -609,3 +609,36 @@ class Solution:
                 return False
         return True     
 ```
+
+#### 338. 比特位计数
+```python
+# fallback
+class Solution:
+    def get2bins(self, num):
+        out = []
+        while num != 0:
+            bins = num % 2
+            num = num // 2
+            out.append(bins)
+
+        return sum(out)
+    def countBits(self, n: int) -> List[int]:
+        out_ = []
+        for i in range(n+1):
+            out_.append(self.get2bins(i))
+
+        return out_
+```
+```python
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        def countOnes(x: int) -> int:
+            ones = 0
+            while x > 0:
+                x &= (x - 1)
+                ones += 1
+            return ones
+        
+        bits = [countOnes(i) for i in range(n + 1)]
+        return bits
+```
