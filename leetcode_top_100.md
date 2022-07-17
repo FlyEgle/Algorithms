@@ -763,3 +763,43 @@ class Solution:
         return "".join(strs) if strs[0] != '0' else '0'
 >>>>>>> Stashed changes
 ```
+
+#### 169. 多数元素
+```python
+# fallback
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        data = {}
+        for n in nums:
+            if n not in data:
+                data[n] = 1
+            else:
+                data[n] += 1
+            
+        for k, v in data.items():
+            if v > len(nums) / 2:
+                return k 
+```
+
+#### 560. 和为K的子数组
+```python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        # 要求的连续子数组
+        count = 0
+        n = len(nums)
+        preSums = collections.defaultdict(int)
+        preSums[0] = 1
+
+        presum = 0
+        for i in range(n):
+            presum += nums[i]
+            
+            # if preSums[presum - k] != 0:
+            count += preSums[presum - k]   # 利用defaultdict的特性，当presum-k不存在时，返回的是0。这样避免了判断
+
+            preSums[presum] += 1  # 给前缀和为presum的个数加1
+            
+        return count
+
+```
