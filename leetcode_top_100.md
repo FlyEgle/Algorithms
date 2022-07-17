@@ -563,3 +563,49 @@ class Solution:
             return nums[c]
         return quick_sort(0, len(nums)-1)
 ```
+
+#### 234. 回文链表
+```python
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        # fallback 
+        stack = []
+        while head:
+            stack.append(head.val)
+            head = head.next 
+
+        start, end = 0, len(stack) - 1
+        while ( start <= end):
+            if (stack[start] != stack[end]):
+                return False 
+            start += 1
+            end -= 1
+        return True
+```
+
+```python
+class Solution:
+
+    def find_link_mid(self, head):
+        low, fast = head, head
+        while low and low.next and fast and fast.next and fast.next.next:
+            low, fast = low.next, fast.next.next
+        return low
+
+    def reverse_link(self, head):
+        rev, rev_pre = head, None
+        while rev:
+            rev.next, rev_pre, rev =  rev_pre, rev, rev.next
+        return rev_pre
+        
+    def isPalindrome(self, head: ListNode) -> bool:
+        self.link_mid = self.find_link_mid(head)
+        self.reverse_link = self.reverse_link(self.link_mid)
+        ptr1, ptr2 = head, self.reverse_link
+        while ptr1 and ptr2:
+            if ptr1.val == ptr2.val:
+                ptr1, ptr2 = ptr1.next, ptr2.next
+            else:
+                return False
+        return True     
+```
