@@ -672,5 +672,22 @@ class Solution:
 
 #### 617. 合并二叉树
 ```python
+class Solution(object):
+    def mergeTrees(self, t1, t2):
+        def dfs(r1, r2):
+            if not (r1 and r2):
+                return r1 if r1 else r2
+            r1.val += r2.val 
+            r1.left = dfs(r1.left, r2.left)
+            r1.right = dfs(r1.right, r2.right)
+            return r1
 
+        return dfs(t1, t2)
+```
+
+#### 461. 汉明距离
+```python
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        return bin(x ^ y).count('1')
 ```
