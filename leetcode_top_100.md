@@ -564,6 +564,7 @@ class Solution:
         return quick_sort(0, len(nums)-1)
 ```
 
+<<<<<<< Updated upstream
 #### 234. 回文链表
 ```python
 class Solution:
@@ -745,4 +746,20 @@ class Solution:
             return False
         
         return self.check(left.left,right.right) and self.check(left.right,right.left)
+=======
+#### 179. 最大数
+```python
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        strs = map(str, nums)
+        def cmp(a, b):
+            if a + b == b + a:
+                return 0
+            elif a +b > b + a:
+                return 1
+            else:
+                return -1
+        strs = sorted(strs, key=functools.cmp_to_key(cmp), reverse=True)
+        return "".join(strs) if strs[0] != '0' else '0'
+>>>>>>> Stashed changes
 ```
