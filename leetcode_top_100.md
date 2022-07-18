@@ -784,5 +784,60 @@ class Solution:
             preSums[presum] += 1  # 给前缀和为presum的个数加1
             
         return count
+```
 
+#### 279. 完全平方数
+```python
+# 背包问题，动态规划
+class Solution:
+    def numSquares(self, n: int) -> int:
+        dp=[i for i in range(n+1)]
+        for i in range(2,n+1):
+            for j in range(1,int(i**(0.5))+1):
+                dp[i]=min(dp[i],dp[i-j*j]+1)
+        return dp[-1]
+```
+
+#### 322. 零钱兑换
+```python
+# low performance
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        memo = dict()
+        def dp(n):
+            if n == 0:return 0
+            if n < 0 : return -1
+            if n in memo:
+                return memo[n]
+
+            res = float("INF")
+            
+            for coin in coins:
+                subproblem = dp(n - coin)
+                if subproblem == -1:
+                    continue
+                res = min(res, subproblem+1)
+            
+            memo[n] = res if res != float('INF') else -1
+            return memo[n]
+        
+        return dp(amount)
+```
+```python
+# high performance
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        dp = [amount+1 for _ in range(amount+1)]
+        dp[0] = 0
+
+        for i in range(len(dp)):
+            for c in coins:
+                if i - c < 0:
+                    continue
+                dp[i] = min(dp[i], dp[i-c] + 1)
+
+        if dp[amount] == amount + 1:
+            return - 1
+        else:
+            return dp[amount]
 ```
