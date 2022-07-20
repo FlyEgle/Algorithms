@@ -890,3 +890,50 @@ class Solution:
         
         return 0 if right == -1 else right - left + 1
 ```
+#### 647. 回文子串
+```python
+# 动态规划
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        # dp[i][j]: 以i开头，以j结尾的子串是否是回文串
+        # if s[i] == s[j],
+        #                   dp[i][j] = True if i == j       子串长度为1
+        #                   dp[i][j] = True if j - i == 1   子串长度为2
+        #                   dp[i][j] = dp[i+1][j-1]
+        #  由于dp[i][j]依赖dp[i+1][j-1], dp矩阵要从左下角开始遍历
+        n = len(s)
+        dp = [[False] * n for _ in range(n)]
+        ans = 0
+        for i in range(n-1, -1, -1):
+            for j in range(i, n):
+                if s[i] == s[j]:
+                    if i == j or j - i == 1:
+                        dp[i][j] = True
+                        ans += 1
+                    elif dp[i+1][j-1]:
+                        dp[i][j] = True
+                        ans += 1
+        return ans
+
+
+# 中心扩散
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        # 以每个位置作为回文中心，尝试扩展
+        # 回文中心有2种形式，1个数或2个数
+        n = len(s)
+
+        def spread(left, right):
+            nonlocal ans
+            while left >= 0 and right <= n - 1 and s[left] == s[right]:
+                left -= 1
+                right += 1
+                ans += 1
+
+        ans = 0
+        for i in range(n):
+            spread(i, i)
+            spread(i, i + 1)
+
+        return ans
+```
