@@ -937,3 +937,37 @@ class Solution:
 
         return ans
 ```
+
+##### 739. 每日温度
+```python
+# fallback 会超出时间限制
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        t = temperatures
+        answer = [0 for _ in range(len(t))]
+        
+        for i in range(len(t) - 1):
+            index = 0
+            for j in range(i+1, len(t)):
+                if t[j] > t[i]:
+                    index = j - i 
+                    break 
+            answer[i] = index 
+        answer[-1] = 0
+
+        return answer
+
+# 单调栈
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        length = len(temperatures)
+        ans = [0] * length
+        stack = []
+        for i in range(length):
+            temperature = temperatures[i]
+            while stack and temperature > temperatures[stack[-1]]:
+                prev_index = stack.pop()
+                ans[prev_index] = i - prev_index
+            stack.append(i)
+        return ans
+```
