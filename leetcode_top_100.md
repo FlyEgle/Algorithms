@@ -1185,3 +1185,29 @@ class Solution:
         return num_islands
 
 ```
+
+#### 98. 判断二叉搜索树是否合法
+```python
+class Solution:
+    def isValidBST(self, root: TreeNode) -> bool:
+        
+        def dfs(node):
+            if node is None:
+                return True, -sys.maxsize, sys.maxsize
+            
+            # 递归获取左右子树的最大值以及最小值以及是否合法
+            left, lmax, lmin = dfs(node.left)
+            right, rmax, rmin = dfs(node.right)
+            
+            # 如果左右子树存在非法，直接返回
+            if (not left) or (not right):
+                return False, lmax, rmin
+            
+            # 否则比较左子树最大值与右子树最小值
+            if lmax >= node.val or rmin <= node.val:
+                return False, lmax, rmin
+            
+            return True, max(node.val, rmax), min(node.val, lmin)
+           
+        return dfs(root)[0]
+```
