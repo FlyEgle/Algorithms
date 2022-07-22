@@ -1121,3 +1121,67 @@ for t,r in zip(line_points[0],line_points[1]):
 plt.imshow(mask) 
 plt.imshow(img)
 ```
+#### 198. 打家劫舍
+```python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+
+        size = len(nums)
+        if size == 1:
+            return nums[0]
+        
+        first, second = nums[0], max(nums[0], nums[1])
+        for i in range(2, size):
+            first, second = second, max(first + nums[i], second)
+        
+        return second
+```
+
+#### 128. 最长连续序列
+```python
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        longest_streak = 0
+        num_set = set(nums)
+
+        for num in num_set:
+            if num - 1 not in num_set:
+                current_num = num
+                current_streak = 1
+
+                while current_num + 1 in num_set:
+                    current_num += 1
+                    current_streak += 1
+
+                longest_streak = max(longest_streak, current_streak)
+
+        return longest_streak
+```
+#### 200. 岛屿数量
+```python
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        nr = len(grid)
+        if nr == 0:
+            return 0
+        nc = len(grid[0])
+
+        num_islands = 0
+        for r in range(nr):
+            for c in range(nc):
+                if grid[r][c] == "1":
+                    num_islands += 1
+                    grid[r][c] = "0"
+                    neighbors = collections.deque([(r, c)])
+                    while neighbors:
+                        row, col = neighbors.popleft()
+                        for x, y in [(row - 1, col), (row + 1, col), (row, col - 1), (row, col + 1)]:
+                            if 0 <= x < nr and 0 <= y < nc and grid[x][y] == "1":
+                                neighbors.append((x, y))
+                                grid[x][y] = "0"
+        
+        return num_islands
+
+```
