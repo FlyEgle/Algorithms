@@ -1413,3 +1413,54 @@ class Solution:
         
         return dummyHead.next
 ```
+
+#### 46. 全排列
+```python
+# 回溯 + DFS
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        def dfs(nums, size, depth, path, used, res):
+            if depth == size:
+                res.append(path[:])
+                return
+
+            for i in range(size):
+                if not used[i]:
+                    used[i] = True
+                    path.append(nums[i])
+
+                    dfs(nums, size, depth + 1, path, used, res)
+
+                    used[i] = False
+                    path.pop()
+
+        size = len(nums)
+        if len(nums) == 0:
+            return []
+
+        used = [False for _ in range(size)]
+        res = []
+        dfs(nums, size, 0, [], used, res)
+        return res
+
+```
+
+#### 114. 二叉树展开为链表
+```python
+class Solution:
+    def flatten(self, root: TreeNode) -> None:
+        preorderList = list()
+
+        def preorderTraversal(root: TreeNode):
+            if root:
+                preorderList.append(root)
+                preorderTraversal(root.left)
+                preorderTraversal(root.right)
+        
+        preorderTraversal(root)
+        size = len(preorderList)
+        for i in range(1, size):
+            prev, curr = preorderList[i - 1], preorderList[i]
+            prev.left = None
+            prev.right = curr
+```
