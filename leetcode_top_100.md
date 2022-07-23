@@ -1211,3 +1211,106 @@ class Solution:
            
         return dfs(root)[0]
 ```
+
+#### 75. 颜色分类
+```python
+# 单指针
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        ptr = 0
+        n = len(nums)
+        for i in range(n):
+            if nums[i] == 0:
+                nums[ptr], nums[i] = nums[i], nums[ptr]
+                ptr+= 1
+        for i in range(ptr, n):
+            if nums[i] == 1:
+                nums[ptr], nums[i] = nums[i], nums[ptr]
+                ptr += 1
+# 双指针
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        ptr0, ptr1 = 0, 0 
+        n = len(nums)
+
+        for i in range(n):
+            if nums[i] == 1:
+                nums[ptr1], nums[i] = nums[i], nums[ptr1]
+                ptr1 += 1
+            elif nums[i] == 0:
+                nums[ptr0], nums[i] = nums[i], nums[ptr0]
+                if ptr0 < ptr1:
+                    nums[ptr1], nums[i] = nums[i], nums[ptr1]
+                ptr1 += 1
+                ptr0 += 1
+```
+
+#### 139. 单词拆分
+```python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+
+        n = len(s)
+        wordSet = set(wordDict)
+
+        f = [False for _ in range(n+1)]
+        f[0] = True 
+
+        for i in range(n):
+            for j in range(i+1, n+1):
+                if f[i] and (s[i:j] in wordSet):
+                    f[j] = True 
+                    # break 
+        return f[-1] 
+```
+
+#### 39. 组合总和
+```python
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        # 回殊法
+        def dfs(candidates, begin, size, path, res, target):
+            if target < 0:
+                return
+            if target == 0:
+                res.append(path)
+                return
+
+            for index in range(begin, size):
+                dfs(candidates, index, size, path + [candidates[index]], res, target - candidates[index])
+
+        size = len(candidates)
+        if size == 0:
+            return []
+        path = []
+        res = []
+        dfs(candidates, 0, size, path, res, target)
+
+        return res 
+```
+
+#### 148. 排序链表
+```python
+# 额外空间解法
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dumpy = p = ListNode(-1) # 头节点
+        stack = []
+        while head:
+            stack.append(head.val)
+            head = head.next 
+        
+        stack.sort()
+        for n in stack:
+            p.next = ListNode(n)
+            p = p.next 
+
+        return dumpy.next 
+
+```
