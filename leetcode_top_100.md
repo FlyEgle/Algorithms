@@ -1593,3 +1593,35 @@ class Solution:
         index = {element: i for i, element in enumerate(inorder)}
         return myBuildTree(0, n - 1, 0, n - 1)
 ```
+
+#### 547. 省份数量
+```python
+class DSU:
+    def __init__(self, N):
+        self.root = [i for i in range(N)]
+        
+    def find(self, k):
+        if self.root[k] == k:
+            return k
+        return self.find(self.root[k])
+    
+    def union(self, a, b):
+        x = self.find(a)
+        y = self.find(b)
+        if x != y:
+            self.root[y] = x
+        return
+
+class Solution:
+    def findCircleNum(self, M: List[List[int]]) -> int:
+        n = len(M)
+        dsu = DSU(n)
+        for i in range(n):
+            for j in range(i+1, n):
+                if M[i][j] == 1:
+                    dsu.union(i, j)
+        group = set()
+        for i in range(n):
+            group.add(dsu.find(i))
+        return len(group)
+```
