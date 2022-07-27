@@ -1463,4 +1463,214 @@ class Solution:
             prev, curr = preorderList[i - 1], preorderList[i]
             prev.left = None
             prev.right = curr
+#### 72. 编辑距离
+```python
+# 动态规划+自底向上
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        n1 = len(word1)
+        n2 = len(word2)
+        dp = [[0] * (n2 + 1) for _ in range(n1+1)]
+        for j in range(1, n2+1):
+            dp[0][j] = dp[0][j-1] + 1
+        
+        for i in range(1, n1 + 1):
+            dp[i][0] = dp[i-1][0] + 1
+
+        for i in range(1, n1+1):
+            for j in range(1, n2+1):
+                if word1[i-1] == word2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]
+                else:
+                    dp[i][j] = min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1]) + 1
+        
+        return dp[-1][-1]
+```
+
+#### 239. 滑动窗口的最大值
+```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List:
+        n = len(nums)
+        q = collections.deque()
+        for i in range(k):
+            while q and nums[i] >= nums[q[-1]]:
+                q.pop()
+            q.append(i)
+        
+        ans = [nums[q[0]]]
+        for i in range(k, n):
+            while q and nums[i] >= nums[q[-1]]:
+                q.pop()
+            q.append(i)
+            while q[0] <= i -k:
+                q.popleft()
+            ans.append(nums[q[0]])
+
+        return ans 
+```
+
+#### 42. 接雨水
+```python
+# 双指针
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        left, right = 0, len(height) - 1
+        ans = 0
+        left_max, right_max = 0, 0
+        while (left < right):
+            left_max = max(left_max, height[left])
+            right_max = max(right_max, height[right])
+            if height[left] < height[right]:
+                ans += left_max - height[left]
+                left += 1
+            else:
+                ans += right_max - height[right]
+                right -= 1
+
+        return ans
+``` 
+
+#### 23. 合并K个升序链表
+```python
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        if not lists:
+            return 
+        n = len(lists)
+        return self.merge(lists, 0, n-1)
+    
+    def merge(self, lists, left, right):
+        if left == right:
+            return lists[left]
+        mid = left + (right - left) // 2
+        l1 = self.merge(lists, left, mid)
+        l2 = self.merge(lists, mid+1, right)
+        return self.mergeTwoLists(l1, l2)
+    
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dumpy = p = ListNode(0)
+        p1, p2 = list1, list2 
+        while p1 is not None and p2 is not None :
+            if p1.val < p2.val :
+                p.next = p1
+                p1 = p1.next 
+            else:
+                p.next = p2
+                p2 = p2.next 
+            
+            p = p.next
+
+        if p1 is not None:
+            p.next = p1
+        
+        if p2 is not None :
+            p.next = p2
+
+        return dumpy.next
+```
+
+#### 4. 寻找两个正序数组的中位数
+```python
+# 暴力法
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        # 合并两个有序数组
+        m = len(nums1)
+        n = len(nums2)
+        sort_nums = [0 for _ in range(n)]
+        nums1 = nums1 + sort_nums
+        self.merge(nums1, m, nums2, n)
+        # print(nums1)
+        if len(nums1) % 2 == 0:
+
+            return (nums1[len(nums1) // 2 - 1] + nums1[len(nums1) // 2 ]) / 2
+        else:
+            print(int(len(nums1) / 2) + 1)
+            return nums1[int(len(nums1) / 2)]
+    
+
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i = m +n - 1
+        while (i>=0):
+            if (m - 1) >=0 and (n-1) >= 0:
+                if nums1[m-1] > nums2[n-1]:
+                    nums1[i] = nums1[m-1]
+                    m -= 1
+                else:
+                    nums1[i] = nums2[n-1]
+                    n -= 1
+            elif m-1 < 0:
+                nums1[i] = nums2[n-1]
+                n -= 1
+            elif n - 1< 0:
+                nums1[i] = nums1[m-1]
+                m -=1 
+            i-=1
+```
+
+#### 105. 从前序与中序遍历序列构造二叉树
+```python
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        def myBuildTree(preorder_left: int, preorder_right: int, inorder_left: int, inorder_right: int):
+            if preorder_left > preorder_right:
+                return None
+            
+            # 前序遍历中的第一个节点就是根节点
+            preorder_root = preorder_left
+            # 在中序遍历中定位根节点
+            inorder_root = index[preorder[preorder_root]]
+            
+            # 先把根节点建立出来
+            root = TreeNode(preorder[preorder_root])
+            # 得到左子树中的节点数目
+            size_left_subtree = inorder_root - inorder_left
+            # 递归地构造左子树，并连接到根节点
+            # 先序遍历中「从 左边界+1 开始的 size_left_subtree」个元素就对应了中序遍历中「从 左边界 开始到 根节点定位-1」的元素
+            root.left = myBuildTree(preorder_left + 1, preorder_left + size_left_subtree, inorder_left, inorder_root - 1)
+            # 递归地构造右子树，并连接到根节点
+            # 先序遍历中「从 左边界+1+左子树节点数目 开始到 右边界」的元素就对应了中序遍历中「从 根节点定位+1 到 右边界」的元素
+            root.right = myBuildTree(preorder_left + size_left_subtree + 1, preorder_right, inorder_root + 1, inorder_right)
+            return root
+        
+        n = len(preorder)
+        # 构造哈希映射，帮助我们快速定位根节点
+        index = {element: i for i, element in enumerate(inorder)}
+        return myBuildTree(0, n - 1, 0, n - 1)
+```
+
+#### 547. 省份数量
+```python
+class DSU:
+    def __init__(self, N):
+        self.root = [i for i in range(N)]
+        
+    def find(self, k):
+        if self.root[k] == k:
+            return k
+        return self.find(self.root[k])
+    
+    def union(self, a, b):
+        x = self.find(a)
+        y = self.find(b)
+        if x != y:
+            self.root[y] = x
+        return
+
+class Solution:
+    def findCircleNum(self, M: List[List[int]]) -> int:
+        n = len(M)
+        dsu = DSU(n)
+        for i in range(n):
+            for j in range(i+1, n):
+                if M[i][j] == 1:
+                    dsu.union(i, j)
+        group = set()
+        for i in range(n):
+            group.add(dsu.find(i))
+        return len(group)
 ```
