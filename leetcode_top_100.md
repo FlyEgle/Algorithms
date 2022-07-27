@@ -1463,6 +1463,8 @@ class Solution:
             prev, curr = preorderList[i - 1], preorderList[i]
             prev.left = None
             prev.right = curr
+```
+
 #### 72. 编辑距离
 ```python
 # 动态规划+自底向上
