@@ -541,6 +541,31 @@ class Solution:
                 left = middle + 1
 
         return index
+
+class Solution(object):
+    def searchRange(self,nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        def left_func(nums,target):
+            n = len(nums)-1
+            left = 0
+            right = n
+            while(left<=right):
+                mid = (left+right)//2
+                if nums[mid] >= target:
+                    right = mid-1
+                if nums[mid] < target:
+                    left = mid+1
+            return left
+        a =  left_func(nums,target)
+        b = left_func(nums,target+1)
+        if  a == len(nums) or nums[a] != target:
+            return [-1,-1]
+        else:
+            return [a,b-1]
 ```
 
 #### 215. 数组中的第K个最大元素
