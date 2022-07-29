@@ -792,6 +792,31 @@ class Solution:
         return maxprofit
 ```
 
+#### 122. 买卖股票的最佳时机 II
+```python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+    
+        def isSorted(nums):
+            size = len(nums)
+            ans = 0
+            for i in range(size - 1):
+                if nums[i] < nums[i + 1]:
+                    ans += 1 
+            return ans 
+        
+        if not isSorted(prices):
+            return 0 
+        
+        res = 0
+        
+        for i in range(1, len(prices)):
+            res += max(0, prices[i] - prices[i-1])
+        
+        return res 
+```
+
+
 #### 101. 对称二叉树
 ```python
 class Solution:
@@ -1783,4 +1808,15 @@ class Solution:
             rev = rev * 10 + digit
         
         return rev
+```
+
+#### 55. 跳跃游戏
+```python
+class Solution:
+    def canJump(self, nums):
+        max_i = 0
+        for i, jump in enumerate(nums):
+            if max_i >= i and i + jump > max_i:
+                max_i = i + jump 
+            return max_i >= i
 ```
