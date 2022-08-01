@@ -160,6 +160,43 @@ class Solution:
         return -1
 ```
 
+#### 69. x的平方根
+```python
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        l, r = 0, x 
+        ans = -1
+        while (l <= r):
+            m = l + (r - l )// 2
+            s = m * m 
+            if s <= x:
+                l = m + 1
+                ans = m
+            else:
+                r = m - 1
+        return ans
+```
+
+#### 744. 寻找比目标字母大的最小字母
+```python
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        l, r = 0, len(letters)-1
+        
+        if target >= letters[-1]:
+            return letters[0]
+        
+        while (l<r):
+            m = l + (r - l) // 2
+            if (letters[m] > target):
+                r = m
+            else:
+                l = m + 1
+                
+        return letters[l]
+```
+
+
 #### 206. 反转链表
 ```python
 # Definition for singly-linked list.
@@ -1820,3 +1857,4 @@ class Solution:
                 max_i = i + jump 
             return max_i >= i
 ```
+
