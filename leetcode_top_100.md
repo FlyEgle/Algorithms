@@ -1858,3 +1858,25 @@ class Solution:
             return max_i >= i
 ```
 
+#### 134. 加油站
+```python
+
+# 贪心
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        n = len(gas)
+        spare = 0
+        minSpare = 2**31
+        minIndex = 0
+        
+        for i in range(n):
+            spare += gas[i] - cost[i]
+            if spare < minSpare:
+                minSpare = spare
+                minIndex = i 
+        
+        if spare < 0:
+            return -1
+        else:
+            return (minIndex + 1) % n
+```
