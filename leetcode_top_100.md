@@ -1880,3 +1880,20 @@ class Solution:
         else:
             return (minIndex + 1) % n
 ```
+
+#### 78. 子集
+```python
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        
+        res = [[]]
+        
+        for i in range(len(nums)):
+            temp = []
+            for r in res:
+                temp.append(r + [nums[i]])
+            
+            res += temp 
+            
+        return res 
+```
