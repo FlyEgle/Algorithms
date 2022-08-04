@@ -1925,3 +1925,43 @@ class Solution:
         cur.next = None 
         return ret 
 ```
+
+#### 剑指 Offer 14- I. 剪绳子
+```python
+class Solution:
+    def cuttingRope(self, n: int) -> int:
+        dp = [0 for _ in range(n+1)]
+        dp[0], dp[1] = 1, 1
+
+        for i in range(2, n+1):
+            for j in range(1, i+1):
+                dp[i] = max(dp[i], j * dp[i-j])
+
+        ans = 1
+        for i in range(1, n):
+            ans = max(i * dp[n-i], ans)
+        
+        return ans 
+```
+
+#### 剑指 Offer 47. 礼物的最大价值
+```python
+class Solution:
+    def maxValue(self, grid: List[List[int]]) -> int:
+
+        m = len(grid)
+        n = len(grid[0])
+
+        for i in range(m):
+            for j in range(n):
+                if i == 0 and j == 0:
+                    continue 
+                if i == 0:
+                    grid[i][j] += grid[i][j-1]
+                elif j == 0:
+                    grid[i][j] += grid[i-1][j]
+                else:
+                    grid[i][j] += max(grid[i][j-1], grid[i-1][j])
+
+        return grid[-1][-1]
+```
