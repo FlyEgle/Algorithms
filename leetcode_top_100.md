@@ -1965,3 +1965,48 @@ class Solution:
 
         return grid[-1][-1]
 ```
+
+
+#### 剑指 Offer 16. 数值的整数次方
+```python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if x == 0: 
+            return 0
+        res = 1
+        if n < 0: 
+            x, n = 1 / x, -n
+        
+        while n:
+            if n & 1: 
+                res *= x
+            x *= x
+            n >>= 1
+
+        return res
+```
+
+#### 面试题13. 机器人的运动范围
+```python
+class Solution:
+    def dfs(i, j):
+        if i >=m or j >= n:
+            return 0
+        
+        if (i, j) in visited:
+            return 0
+
+        sum_i = i // 10 + i % 10
+        sum_j = j // 10 + j % 10
+
+        if sum_j + sum_i > k:
+            return 0
+        
+        visited.add((i, j))
+        return 1 + dfs(i+1, j) + dfs(i, j+1)
+    
+
+    visited = set()
+    res = dfs(0, 0)
+    return res 
+```
