@@ -2010,3 +2010,90 @@ class Solution:
     res = dfs(0, 0)
     return res 
 ```
+
+#### [剑指 Offer 12. 矩阵中的路径](https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/)
+```python
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+        def check(i: int, j: int, k: int) -> bool:
+            if board[i][j] != word[k]:
+                return False
+            if k == len(word) - 1:
+                return True
+            
+            visited.add((i, j))
+            result = False
+            for di, dj in directions:
+                newi, newj = i + di, j + dj
+                if 0 <= newi < len(board) and 0 <= newj < len(board[0]):
+                    if (newi, newj) not in visited:
+                        if check(newi, newj, k + 1):
+                            result = True
+                            break
+            
+            visited.remove((i, j))
+            return result
+
+        h, w = len(board), len(board[0])
+        visited = set()
+        for i in range(h):
+            for j in range(w):
+                if check(i, j, 0):
+                    return True
+        
+        return False
+```
+
+
+#### [剑指 Offer 60. n个骰子的点数](https://leetcode.cn/problems/nge-tou-zi-de-dian-shu-lcof/solution/jian-zhi-offer-60-n-ge-tou-zi-de-dian-sh-z36d/)
+```python
+class Solution:
+    def dicesProbability(self, n: int) -> List[float]:
+        dp = [1 / 6] * 6
+        for i in range(2, n + 1):
+            tmp = [0] * (5 * i + 1)
+            for j in range(len(dp)):
+                for k in range(6):
+                    tmp[j + k] += dp[j] / 6
+            dp = tmp
+        return dp
+```
+
+#### [面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/)
+```python
+class Solution:
+    def oneEditAway(self, first: str, second: str) -> bool:
+        m, n = len(first), len(second)
+        if m < n:
+            return self.oneEditAway(second, first)
+        if m - n > 1:
+            return False
+        for i, (x, y) in enumerate(zip(first, second)):
+            if x != y:
+                return first[i + 1:] == second[i + 1:] if m == n else first[i + 1:] == second[i:]  # 注：改用下标枚举可达到 O(1) 空间复杂度
+        return True
+```
+
+#### [面试题 02.08. 环路检测](https://leetcode.cn/problems/linked-list-cycle-lcci/)
+```python
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        slow, fast = head, head
+        while fast and fast.next: #开始走位
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast: # 相遇
+                break
+            
+        # 若无相会处，则无环路
+        if not fast or not fast.next:
+            return None
+        # 若两者以相同的速度移动，则必然在环路起始处相遇
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+```
