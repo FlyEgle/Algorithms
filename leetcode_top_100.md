@@ -1,5 +1,7 @@
 ### LeetCode Top 100
+
 ##### 1. 两数之和
+
 ```python
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -13,6 +15,7 @@ class Solution:
 ```
 
 ##### 2. 两数相加
+
 ```python
 # class ListNode(object):
 #     def __init__(self, val=0, next=None):
@@ -27,7 +30,7 @@ class Solution(object):
         """
         dummy = p = ListNode(None)
         s = 0
-        
+
         while l1 or l2 or s! =0:
             s += (l1.val if l1 else 0) + (l2.val if l2 else 0)
             p.next = ListNode(s%10)
@@ -42,6 +45,7 @@ class Solution(object):
 ```
 
 ##### 3. 无重复字符的最长子串
+
 ```python
 class Solution:
     def lengthOfLongestSubstring(self, s:str) -> int:
@@ -61,6 +65,7 @@ class Solution:
 ```
 
 ##### 20. 有效的括号
+
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -96,6 +101,7 @@ class Solution:
 ```
 
 #### 21. 合并两个有序链表
+
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -113,19 +119,20 @@ class Solution:
             else:
                 p.next = p2
                 p2 = p2.next 
-            
+
             p = p.next
 
         if p1 is not None:
             p.next = p1
-        
+
         if p2 is not None :
             p.next = p2
 
         return dumpy.next
 ```
 
-####  160. 相交链表
+#### 160. 相交链表
+
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -145,6 +152,7 @@ class Solution:
 ```
 
 #### 704. 二分查找
+
 ```python
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
@@ -161,6 +169,7 @@ class Solution:
 ```
 
 #### 69. x的平方根
+
 ```python
 class Solution:
     def mySqrt(self, x: int) -> int:
@@ -178,26 +187,27 @@ class Solution:
 ```
 
 #### 744. 寻找比目标字母大的最小字母
+
 ```python
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         l, r = 0, len(letters)-1
-        
+
         if target >= letters[-1]:
             return letters[0]
-        
+
         while (l<r):
             m = l + (r - l) // 2
             if (letters[m] > target):
                 r = m
             else:
                 l = m + 1
-                
+
         return letters[l]
 ```
 
-
 #### 206. 反转链表
+
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -214,11 +224,12 @@ class Solution:
             cur.next = pre 
             pre = cur 
             cur = tmp 
-        
+
         return pre 
 ```
 
 #### 141. 环形链表
+
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -230,7 +241,7 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if head is None or head.next is None:
             return False 
-        
+
         slow = head 
         fast = head.next 
         while(slow != fast):
@@ -242,6 +253,7 @@ class Solution:
 ```
 
 #### 94. 二叉树中序遍历
+
 ```python
 # 递归解法
 # Definition for a binary tree node.
@@ -273,6 +285,7 @@ class Solution:
 ```
 
 #### 斐波那契数列迭代法
+
 ```python
 class Solution:
     def fib(self, n: int) -> int:
@@ -288,6 +301,7 @@ class Solution:
 ```
 
 #### 剑指 Offer 22. 链表中倒数第k个节点
+
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -302,7 +316,7 @@ class Solution:
         while k:
             fast = fast.next 
             k-=1
-        
+
         while fast:
             slow = slow.next 
             fast = fast.next 
@@ -311,6 +325,7 @@ class Solution:
 ```
 
 #### 88. 合并两个有序数组
+
 ```python
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
@@ -334,7 +349,9 @@ class Solution:
                 m -=1 
             i-=1
 ```
+
 #### 53.最大子数组和
+
 ```python
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
@@ -342,7 +359,7 @@ class Solution:
         dp[0] = nums[0]
         for i in range(1, len(nums)):
             dp[i] = max(dp[i-1] + nums[i], nums[i])
-        
+
         res = -inf 
         for i in range(len(nums)):
             res = max(res, dp[i])
@@ -351,6 +368,7 @@ class Solution:
 ```
 
 #### 226. 翻转二叉树
+
 ```python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -369,7 +387,9 @@ class Solution:
 
         return root 
 ```
+
 #### 快速排序
+
 ```python
 def partition(arr: List[int], low: int, high: int):
     pivot, j = arr[low], low
@@ -412,13 +432,14 @@ def quick_sort(lists,i,j):
             i += 1
         lists[j]=lists[i]
     lists[j] = pivot
-    
+
     quick_sort(lists,low,i-1)
     quick_sort(lists,i+1,high)
     return lists
 ```
 
 #### 15. 三数之和
+
 ```python
 class Solution:
     def threeSum(self, nums: [int]) -> [[int]]:
@@ -443,22 +464,23 @@ class Solution:
                     while i < j and nums[i] == nums[i - 1]: i += 1
                     while i < j and nums[j] == nums[j + 1]: j -= 1
         return res
-
 ```
+
 #### 16. 最接近的三数之和
+
 ```python
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
         n = len(nums)
         best = 10**7
-        
+
         # 根据差值的绝对值来更新答案
         def update(cur):
             nonlocal best
             if abs(cur - target) < abs(best - target):
                 best = cur
-        
+
         # 枚举 a
         for i in range(n):
             # 保证和上一次枚举的元素不相等
@@ -490,12 +512,10 @@ class Solution:
         return best
 ```
 
-
-
-
 #### 二叉树层序遍历
 
 ##### BFS
+
 ```python
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -526,10 +546,10 @@ class Solution(object):
             if level:
                 res.append(level)
         return res
-
 ```
 
 ##### DFS
+
 ```python
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -553,7 +573,7 @@ class Solution(object):
             return
         if len(res) == level: 
             res.append([])
-        
+
         res[level].append(root.val)
         if root.left: 
             self.level(root.left, level + 1, res)
@@ -561,7 +581,8 @@ class Solution(object):
             self.level(root.right, level + 1, res)
 ```
 
-#### Offer II 004. 只出现一次的数字 
+#### Offer II 004. 只出现一次的数字
+
 ```python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
@@ -571,13 +592,14 @@ class Solution:
                 hash_map[num] = 1
             else:
                 hash_map[num] += 1
-        
+
         for k, v in hash_map.items():
             if v == 1:
                 return k
 ```
 
 #### 14. 最长公共前缀
+
 ```python
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
@@ -593,6 +615,7 @@ class Solution:
 ```
 
 #### 34. 在排序数组中查找元素的第一个和最后一个位置
+
 ```python
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
@@ -601,7 +624,7 @@ class Solution:
 
         if nums[0] > target or nums[-1] < target:
             return [-1, -1]
-        
+
         # 二分
         left = 0
         right = len(nums) -1
@@ -613,7 +636,7 @@ class Solution:
                 right = middle 
                 while (left-1>=0 and nums[left-1] == target):
                     left -= 1
-                
+
                 while (right+1<=len(nums)-1 and nums[right+1] == target):
                     right += 1
 
@@ -653,6 +676,7 @@ class Solution(object):
 ```
 
 #### 215. 数组中的第K个最大元素
+
 ```python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -674,6 +698,7 @@ class Solution:
 ```
 
 #### 234. 回文链表
+
 ```python
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
@@ -706,7 +731,7 @@ class Solution:
         while rev:
             rev.next, rev_pre, rev =  rev_pre, rev, rev.next
         return rev_pre
-        
+
     def isPalindrome(self, head: ListNode) -> bool:
         self.link_mid = self.find_link_mid(head)
         self.reverse_link = self.reverse_link(self.link_mid)
@@ -720,6 +745,7 @@ class Solution:
 ```
 
 #### 338. 比特位计数
+
 ```python
 # fallback
 class Solution:
@@ -738,6 +764,7 @@ class Solution:
 
         return out_
 ```
+
 ```python
 class Solution:
     def countBits(self, n: int) -> List[int]:
@@ -747,12 +774,13 @@ class Solution:
                 x &= (x - 1)
                 ones += 1
             return ones
-        
+
         bits = [countOnes(i) for i in range(n + 1)]
         return bits
 ```
 
 #### 543. 二叉树的直径
+
 ```python
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -780,6 +808,7 @@ class Solution:
 ```
 
 #### 617. 合并二叉树
+
 ```python
 class Solution(object):
     def mergeTrees(self, t1, t2):
@@ -795,6 +824,7 @@ class Solution(object):
 ```
 
 #### 461. 汉明距离
+
 ```python
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
@@ -802,6 +832,7 @@ class Solution:
 ```
 
 #### 121. 买卖股票的最佳时机
+
 ```python
 # 动态规划
 class Solution:
@@ -830,10 +861,11 @@ class Solution:
 ```
 
 #### 122. 买卖股票的最佳时机 II
+
 ```python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-    
+
         def isSorted(nums):
             size = len(nums)
             ans = 0
@@ -841,20 +873,20 @@ class Solution:
                 if nums[i] < nums[i + 1]:
                     ans += 1 
             return ans 
-        
+
         if not isSorted(prices):
             return 0 
-        
+
         res = 0
-        
+
         for i in range(1, len(prices)):
             res += max(0, prices[i] - prices[i-1])
-        
+
         return res 
 ```
 
-
 #### 101. 对称二叉树
+
 ```python
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
@@ -866,7 +898,7 @@ class Solution:
         if root is None:
             return True
         return self.check(root.left,root.right)
-    
+
     def check(self,left: TreeNode,right: TreeNode):
         #递归的终止条件是两个节点都为空
         #或左右有任意一个不为空，一定不对称
@@ -877,11 +909,12 @@ class Solution:
             return False
         if left.val != right.val:
             return False
-        
+
         return self.check(left.left,right.right) and self.check(left.right,right.left)
 ```
 
 #### 169. 多数元素
+
 ```python
 # fallback
 class Solution:
@@ -892,13 +925,14 @@ class Solution:
                 data[n] = 1
             else:
                 data[n] += 1
-            
+
         for k, v in data.items():
             if v > len(nums) / 2:
                 return k 
 ```
 
 #### 560. 和为K的子数组
+
 ```python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
@@ -911,16 +945,17 @@ class Solution:
         presum = 0
         for i in range(n):
             presum += nums[i]
-            
+
             # if preSums[presum - k] != 0:
             count += preSums[presum - k]   # 利用defaultdict的特性，当presum-k不存在时，返回的是0。这样避免了判断
 
             preSums[presum] += 1  # 给前缀和为presum的个数加1
-            
+
         return count
 ```
 
 #### 279. 完全平方数
+
 ```python
 # 背包问题，动态规划
 class Solution:
@@ -933,6 +968,7 @@ class Solution:
 ```
 
 #### 322. 零钱兑换
+
 ```python
 # low performance
 class Solution:
@@ -945,18 +981,19 @@ class Solution:
                 return memo[n]
 
             res = float("INF")
-            
+
             for coin in coins:
                 subproblem = dp(n - coin)
                 if subproblem == -1:
                     continue
                 res = min(res, subproblem+1)
-            
+
             memo[n] = res if res != float('INF') else -1
             return memo[n]
-        
+
         return dp(amount)
 ```
+
 ```python
 # high performance
 class Solution:
@@ -977,6 +1014,7 @@ class Solution:
 ```
 
 #### 581. 最短无序连续子数组
+
 ```python
 # fallback
 class Solution:
@@ -988,10 +1026,10 @@ class Solution:
                 if nums[i - 1] > nums[i]:
                     return False
             return True
-        
+
         if isSorted():
             return 0
-        
+
         numsSorted = sorted(nums)
         left = 0
         while nums[left] == numsSorted[left]:
@@ -1000,9 +1038,10 @@ class Solution:
         right = n - 1
         while nums[right] == numsSorted[right]:
             right -= 1
-        
+
         return right - left + 1
 ```
+
 ```python
 # 一次遍历+min max计数
 class Solution:
@@ -1016,15 +1055,17 @@ class Solution:
                 right = i
             else:
                 maxn = nums[i]
-            
+
             if minn < nums[n - i - 1]:
                 left = n - i - 1
             else:
                 minn = nums[n - i - 1]
-        
+
         return 0 if right == -1 else right - left + 1
 ```
+
 #### 647. 回文子串
+
 ```python
 # 动态规划
 class Solution:
@@ -1069,13 +1110,14 @@ class Solution:
 ```
 
 ##### 739. 每日温度
+
 ```python
 # fallback 会超出时间限制
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         t = temperatures
         answer = [0 for _ in range(len(t))]
-        
+
         for i in range(len(t) - 1):
             index = 0
             for j in range(i+1, len(t)):
@@ -1103,6 +1145,7 @@ class Solution:
 ```
 
 #### 5. 最长回文子串
+
 ```python
 # 动态规划
 class Solution:
@@ -1110,14 +1153,14 @@ class Solution:
         n = len(s)
         if n < 2:
             return s
-        
+
         max_len = 1
         begin = 0
         # dp[i][j] 表示 s[i..j] 是否是回文串
         dp = [[False] * n for _ in range(n)]
         for i in range(n):
             dp[i][i] = True
-        
+
         # 递推开始
         # 先枚举子串长度
         for L in range(2, n + 1):
@@ -1128,7 +1171,7 @@ class Solution:
                 # 如果右边界越界，就可以退出当前循环
                 if j >= n:
                     break
-                    
+
                 if s[i] != s[j]:
                     dp[i][j] = False 
                 else:
@@ -1136,7 +1179,7 @@ class Solution:
                         dp[i][j] = True
                     else:
                         dp[i][j] = dp[i + 1][j - 1]
-                
+
                 # 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置
                 if dp[i][j] and j - i + 1 > max_len:
                     max_len = j - i + 1
@@ -1164,6 +1207,7 @@ class Solution:
 ```
 
 #### 11. 盛最多水的容器
+
 ```python
 class Solution:
     def maxArea(self, height: List[int]) -> int:
@@ -1177,10 +1221,10 @@ class Solution:
             else:
                 r -= 1
         return ans
-
 ```
 
 #### 56. 合并区间
+
 ```python
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
@@ -1199,6 +1243,7 @@ class Solution:
 ```
 
 #### 霍夫变换
+
 ```python
 import numpy as np 
 import cv2 
@@ -1211,21 +1256,21 @@ img = 255 - img print(img.shape)  # [204,547]
 
 # 正变换：将xy坐标系中的点映射到极坐标中，记录映射函数经过的每一点 
 def hough_forward_conver(x,y,points):     
-	for t in range(0,360,2):         
-		r = int(x * np.cos(np.pi*t/180) + y * np.sin(np.pi*t/180))         
-		points.append([t,r])  # 直线经过的点放进去     
-	return points     
+    for t in range(0,360,2):         
+        r = int(x * np.cos(np.pi*t/180) + y * np.sin(np.pi*t/180))         
+        points.append([t,r])  # 直线经过的点放进去     
+    return points     
 
 # 反变换：根据极坐标系的坐标求xy坐标系的坐标 
 def hough_reverse_conver(y, t,r):     
-	x = int(- y * (np.sin(np.pi*t/180) / (np.cos(np.pi*t/180)+ 1e-4)) + r / (np.sin(np.pi*t/180)+1e-4))     
-	return x   
+    x = int(- y * (np.sin(np.pi*t/180) / (np.cos(np.pi*t/180)+ 1e-4)) + r / (np.sin(np.pi*t/180)+1e-4))     
+    return x   
 
 # 霍夫正变换 
 points = []  # 存放变换后的直线经过的点 
 px, py = np.where(img == 255)  # 检测出直线上的点 
 for x,y in zip(px,py):     
-	points = hough_forward_conver(x,y,points)  # 霍夫变换，xy--->theta,rho 
+    points = hough_forward_conver(x,y,points)  # 霍夫变换，xy--->theta,rho 
 print(len(points)) 
 
 # 画极坐标图 
@@ -1250,12 +1295,14 @@ for t,r in zip(line_points[0],line_points[1]):
      for y in range(img.shape[0]):     
          x = hough_reverse_conver(y, t,r-1000)         
          if x in range(1,img.shape[1]):             
-         	mask[y,x] += 1             
+             mask[y,x] += 1             
 
 plt.imshow(mask) 
 plt.imshow(img)
 ```
+
 #### 198. 打家劫舍
+
 ```python
 class Solution:
     def rob(self, nums: List[int]) -> int:
@@ -1265,15 +1312,16 @@ class Solution:
         size = len(nums)
         if size == 1:
             return nums[0]
-        
+
         first, second = nums[0], max(nums[0], nums[1])
         for i in range(2, size):
             first, second = second, max(first + nums[i], second)
-        
+
         return second
 ```
 
 #### 128. 最长连续序列
+
 ```python
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
@@ -1293,7 +1341,9 @@ class Solution:
 
         return longest_streak
 ```
+
 #### 200. 岛屿数量
+
 ```python
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
@@ -1315,19 +1365,50 @@ class Solution:
                             if 0 <= x < nr and 0 <= y < nc and grid[x][y] == "1":
                                 neighbors.append((x, y))
                                 grid[x][y] = "0"
-        
-        return num_islands
 
+        return num_islands
 ```
 
+补充一个深度优先算法：
+
+```python
+class Solution:
+    def dfs(self, grid, row, col):
+        grid[row][col] = 0
+        rows = len(grid)
+        cols = len(grid[0])
+        for new_x, new_y in [(row - 1, col), (row + 1, col), (row, col - 1), (row, col + 1)]:
+            if 0 <= new_x < rows and 0 <= new_y < cols and grid[new_x][new_y] == "1":
+                self.dfs(grid, new_x, new_y)
+
+    def numIslands(self, grid: List[List[str]]) -> int:
+        rows = len(grid)
+        if rows == 0:
+            return 0
+        cols = len(grid[0])
+
+        numIsland = 0
+
+        for row in range(rows):
+            for col in range(cols):
+                if grid[row][col] == "1":
+                    numIsland += 1
+                    self.dfs(grid, row, col)
+
+        return numIsland
+```
+
+
+
 #### 98. 判断二叉搜索树是否合法
+
 ```python
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         def helper(node, lower = float('-inf'), upper = float('inf')) -> bool:
             if not node:
                 return True
-            
+
             val = node.val
             if val <= lower or val >= upper:
                 return False
@@ -1339,10 +1420,10 @@ class Solution:
             return True
 
         return helper(root)
-
 ```
 
 #### 75. 颜色分类
+
 ```python
 # 单指针
 class Solution:
@@ -1382,6 +1463,7 @@ class Solution:
 ```
 
 #### 139. 单词拆分
+
 ```python
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
@@ -1401,6 +1483,7 @@ class Solution:
 ```
 
 #### 39. 组合总和
+
 ```python
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -1426,6 +1509,7 @@ class Solution:
 ```
 
 #### 148. 排序链表
+
 ```python
 # 额外空间解法
 class Solution:
@@ -1435,7 +1519,7 @@ class Solution:
         while head:
             stack.append(head.val)
             head = head.next 
-        
+
         stack.sort()
         for n in stack:
             p.next = ListNode(n)
@@ -1460,7 +1544,7 @@ class Solution:
                     fast = fast.next
             mid = slow
             return merge(sortFunc(head, mid), sortFunc(mid, tail))
-            
+
         def merge(head1: ListNode, head2: ListNode) -> ListNode:
             dummyHead = ListNode(0)
             temp, temp1, temp2 = dummyHead, head1, head2
@@ -1477,7 +1561,7 @@ class Solution:
             elif temp2:
                 temp.next = temp2
             return dummyHead.next
-        
+
         return sortFunc(head, None)
 
 # 自底向上，归并
@@ -1499,16 +1583,16 @@ class Solution:
             elif temp2:
                 temp.next = temp2
             return dummyHead.next
-        
+
         if not head:
             return head
-        
+
         length = 0
         node = head
         while node:
             length += 1
             node = node.next
-        
+
         dummyHead = ListNode(0, head)
         subLength = 1
         while subLength < length:
@@ -1528,23 +1612,24 @@ class Solution:
                         curr = curr.next
                     else:
                         break
-                
+
                 succ = None
                 if curr:
                     succ = curr.next
                     curr.next = None
-                
+
                 merged = merge(head1, head2)
                 prev.next = merged
                 while prev.next:
                     prev = prev.next
                 curr = succ
             subLength <<= 1
-        
+
         return dummyHead.next
 ```
 
 #### 46. 全排列
+
 ```python
 # 回溯 + DFS
 class Solution:
@@ -1572,10 +1657,10 @@ class Solution:
         res = []
         dfs(nums, size, 0, [], used, res)
         return res
-
 ```
 
 #### 114. 二叉树展开为链表
+
 ```python
 class Solution:
     def flatten(self, root: TreeNode) -> None:
@@ -1586,7 +1671,7 @@ class Solution:
                 preorderList.append(root)
                 preorderTraversal(root.left)
                 preorderTraversal(root.right)
-        
+
         preorderTraversal(root)
         size = len(preorderList)
         for i in range(1, size):
@@ -1596,6 +1681,7 @@ class Solution:
 ```
 
 #### 72. 编辑距离
+
 ```python
 # 动态规划+自底向上
 class Solution:
@@ -1605,7 +1691,7 @@ class Solution:
         dp = [[0] * (n2 + 1) for _ in range(n1+1)]
         for j in range(1, n2+1):
             dp[0][j] = dp[0][j-1] + 1
-        
+
         for i in range(1, n1 + 1):
             dp[i][0] = dp[i-1][0] + 1
 
@@ -1615,11 +1701,12 @@ class Solution:
                     dp[i][j] = dp[i-1][j-1]
                 else:
                     dp[i][j] = min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1]) + 1
-        
+
         return dp[-1][-1]
 ```
 
 #### 239. 滑动窗口的最大值
+
 ```python
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List:
@@ -1629,7 +1716,7 @@ class Solution:
             while q and nums[i] >= nums[q[-1]]:
                 q.pop()
             q.append(i)
-        
+
         ans = [nums[q[0]]]
         for i in range(k, n):
             while q and nums[i] >= nums[q[-1]]:
@@ -1643,6 +1730,7 @@ class Solution:
 ```
 
 #### 42. 接雨水
+
 ```python
 # 双指针
 class Solution:
@@ -1661,9 +1749,10 @@ class Solution:
                 right -= 1
 
         return ans
-``` 
+```
 
 #### 23. 合并K个升序链表
+
 ```python
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
@@ -1671,7 +1760,7 @@ class Solution:
             return 
         n = len(lists)
         return self.merge(lists, 0, n-1)
-    
+
     def merge(self, lists, left, right):
         if left == right:
             return lists[left]
@@ -1679,7 +1768,7 @@ class Solution:
         l1 = self.merge(lists, left, mid)
         l2 = self.merge(lists, mid+1, right)
         return self.mergeTwoLists(l1, l2)
-    
+
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         dumpy = p = ListNode(0)
         p1, p2 = list1, list2 
@@ -1690,12 +1779,12 @@ class Solution:
             else:
                 p.next = p2
                 p2 = p2.next 
-            
+
             p = p.next
 
         if p1 is not None:
             p.next = p1
-        
+
         if p2 is not None :
             p.next = p2
 
@@ -1703,6 +1792,7 @@ class Solution:
 ```
 
 #### 4. 寻找两个正序数组的中位数
+
 ```python
 # 暴力法
 class Solution:
@@ -1720,7 +1810,7 @@ class Solution:
         else:
             print(int(len(nums1) / 2) + 1)
             return nums1[int(len(nums1) / 2)]
-    
+
 
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
@@ -1745,18 +1835,19 @@ class Solution:
 ```
 
 #### 105. 从前序与中序遍历序列构造二叉树
+
 ```python
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
         def myBuildTree(preorder_left: int, preorder_right: int, inorder_left: int, inorder_right: int):
             if preorder_left > preorder_right:
                 return None
-            
+
             # 前序遍历中的第一个节点就是根节点
             preorder_root = preorder_left
             # 在中序遍历中定位根节点
             inorder_root = index[preorder[preorder_root]]
-            
+
             # 先把根节点建立出来
             root = TreeNode(preorder[preorder_root])
             # 得到左子树中的节点数目
@@ -1768,7 +1859,7 @@ class Solution:
             # 先序遍历中「从 左边界+1+左子树节点数目 开始到 右边界」的元素就对应了中序遍历中「从 根节点定位+1 到 右边界」的元素
             root.right = myBuildTree(preorder_left + size_left_subtree + 1, preorder_right, inorder_root + 1, inorder_right)
             return root
-        
+
         n = len(preorder)
         # 构造哈希映射，帮助我们快速定位根节点
         index = {element: i for i, element in enumerate(inorder)}
@@ -1776,16 +1867,17 @@ class Solution:
 ```
 
 #### 547. 省份数量
+
 ```python
 class DSU:
     def __init__(self, N):
         self.root = [i for i in range(N)]
-        
+
     def find(self, k):
         if self.root[k] == k:
             return k
         return self.find(self.root[k])
-    
+
     def union(self, a, b):
         x = self.find(a)
         y = self.find(b)
@@ -1808,6 +1900,7 @@ class Solution:
 ```
 
 #### 367. 有效的完全平方数
+
 ```python
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
@@ -1825,6 +1918,7 @@ class Solution:
 ```
 
 #### 7. 整数反转
+
 ```python
 class Solution:
     def reverse(self, x: int) -> int:
@@ -1843,11 +1937,12 @@ class Solution:
             # 同理，Python3 的整数除法在 x 为负数时会向下（更小的负数）取整，因此不能写成 x //= 10
             x = (x - digit) // 10
             rev = rev * 10 + digit
-        
+
         return rev
 ```
 
 #### 55. 跳跃游戏
+
 ```python
 class Solution:
     def canJump(self, nums):
@@ -1859,8 +1954,8 @@ class Solution:
 ```
 
 #### 134. 加油站
-```python
 
+```python
 # 贪心
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
@@ -1868,13 +1963,13 @@ class Solution:
         spare = 0
         minSpare = 2**31
         minIndex = 0
-        
+
         for i in range(n):
             spare += gas[i] - cost[i]
             if spare < minSpare:
                 minSpare = spare
                 minIndex = i 
-        
+
         if spare < 0:
             return -1
         else:
@@ -1882,23 +1977,25 @@ class Solution:
 ```
 
 #### 78. 子集
+
 ```python
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
+
         res = [[]]
-        
+
         for i in range(len(nums)):
             temp = []
             for r in res:
                 temp.append(r + [nums[i]])
-            
+
             res += temp 
-            
+
         return res 
 ```
 
 #### 61. 旋转链表
+
 ```python
 class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
@@ -1910,7 +2007,7 @@ class Solution:
         while cur.next:
             cur = cur.next 
             n += 1
-        
+
         if (n-k % n) == n:
             return head 
 
@@ -1927,6 +2024,7 @@ class Solution:
 ```
 
 #### 剑指 Offer 14- I. 剪绳子
+
 ```python
 class Solution:
     def cuttingRope(self, n: int) -> int:
@@ -1940,11 +2038,12 @@ class Solution:
         ans = 1
         for i in range(1, n):
             ans = max(i * dp[n-i], ans)
-        
+
         return ans 
 ```
 
 #### 剑指 Offer 47. 礼物的最大价值
+
 ```python
 class Solution:
     def maxValue(self, grid: List[List[int]]) -> int:
@@ -1966,8 +2065,8 @@ class Solution:
         return grid[-1][-1]
 ```
 
-
 #### 剑指 Offer 16. 数值的整数次方
+
 ```python
 class Solution:
     def myPow(self, x: float, n: int) -> float:
@@ -1976,7 +2075,7 @@ class Solution:
         res = 1
         if n < 0: 
             x, n = 1 / x, -n
-        
+
         while n:
             if n & 1: 
                 res *= x
@@ -1987,12 +2086,13 @@ class Solution:
 ```
 
 #### 面试题13. 机器人的运动范围
+
 ```python
 class Solution:
     def dfs(i, j):
         if i >=m or j >= n:
             return 0
-        
+
         if (i, j) in visited:
             return 0
 
@@ -2001,12 +2101,210 @@ class Solution:
 
         if sum_j + sum_i > k:
             return 0
-        
+
         visited.add((i, j))
         return 1 + dfs(i+1, j) + dfs(i, j+1)
-    
+
 
     visited = set()
     res = dfs(0, 0)
     return res 
+```
+
+#### [剑指 Offer 12. 矩阵中的路径](https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/)
+
+```python
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+        def check(i: int, j: int, k: int) -> bool:
+            if board[i][j] != word[k]:
+                return False
+            if k == len(word) - 1:
+                return True
+
+            visited.add((i, j))
+            result = False
+            for di, dj in directions:
+                newi, newj = i + di, j + dj
+                if 0 <= newi < len(board) and 0 <= newj < len(board[0]):
+                    if (newi, newj) not in visited:
+                        if check(newi, newj, k + 1):
+                            result = True
+                            break
+
+            visited.remove((i, j))
+            return result
+
+        h, w = len(board), len(board[0])
+        visited = set()
+        for i in range(h):
+            for j in range(w):
+                if check(i, j, 0):
+                    return True
+
+        return False
+```
+
+#### [剑指 Offer 60. n个骰子的点数](https://leetcode.cn/problems/nge-tou-zi-de-dian-shu-lcof/solution/jian-zhi-offer-60-n-ge-tou-zi-de-dian-sh-z36d/)
+
+```python
+class Solution:
+    def dicesProbability(self, n: int) -> List[float]:
+        dp = [1 / 6] * 6
+        for i in range(2, n + 1):
+            tmp = [0] * (5 * i + 1)
+            for j in range(len(dp)):
+                for k in range(6):
+                    tmp[j + k] += dp[j] / 6
+            dp = tmp
+        return dp
+```
+
+#### [面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/)
+
+```python
+class Solution:
+    def oneEditAway(self, first: str, second: str) -> bool:
+        m, n = len(first), len(second)
+        if m < n:
+            return self.oneEditAway(second, first)
+        if m - n > 1:
+            return False
+        for i, (x, y) in enumerate(zip(first, second)):
+            if x != y:
+                return first[i + 1:] == second[i + 1:] if m == n else first[i + 1:] == second[i:]  # 注：改用下标枚举可达到 O(1) 空间复杂度
+        return True
+```
+
+#### [面试题 02.08. 环路检测](https://leetcode.cn/problems/linked-list-cycle-lcci/)
+
+```python
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        slow, fast = head, head
+        while fast and fast.next: #开始走位
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast: # 相遇
+                break
+
+        # 若无相会处，则无环路
+        if not fast or not fast.next:
+            return None
+        # 若两者以相同的速度移动，则必然在环路起始处相遇
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+```
+
+#### 26. 删除有序数组中的重复项
+
+```python
+class Solution:
+    def removeDuplicates(self, nums) -> int:
+        left = 0
+        new_length = 1
+        n = len(nums)
+        for right in range(1, n):
+            if nums[right] == nums[left]:
+                continue
+            else:
+                left = left + 1
+                nums[left] = nums[right]
+                new_length += 1
+
+        return new_length
+```
+
+#### 17. 电话号码的字母组合
+
+```python
+class Solution:
+    def letterCombinations(self, digits: str):
+        if digits == "":
+            return []
+
+        table = {"2": ["a", "b", "c"],
+                 "3": ["d", "e", "f"],
+                 "4": ["g", "h", "i"],
+                 "5": ["j", "k", "l"],
+                 "6": ["m", "n", "o"],
+                 "7": ["p", "q", "r", "s"],
+                 "8": ["t", "u", "v"],
+                 "9": ["w", "x", "y", "z"]}
+
+        result = []
+        combination = []
+        num = len(digits)
+
+        def backtrack(cnt):
+            if cnt == num:
+                result.append("".join(combination))
+                return
+
+            else:
+                digit = digits[cnt]
+                for char in table[digit]:
+                    combination.append(char)
+                    backtrack(cnt+1)
+                    combination.pop()
+
+        backtrack(0)
+        return result
+```
+
+#### 22. 括号生成
+
+```python
+class Solution:
+    def generateParenthesis(self, n: int):
+        ans = []
+
+        def backtrack(s, left, right):
+            if len(s) == 2*n:
+                ans.append("".join(s))
+
+            if left < n:
+                s.append("(")
+                backtrack(s, left+1, right)
+                s.pop()
+            if right < left:
+                s.append(")")
+                backtrack(s, left, right+1)
+                s.pop()
+
+        backtrack([], 0, 0)
+        return ans
+```
+
+#### 31. 下一个排列
+
+```python
+class Solution:
+    def nextPermutation(self, nums) -> None:
+        
+        i = len(nums) - 2
+
+        while i >= 0 and nums[i] >= nums[i + 1]:
+            i -= 1
+        left = i + 1
+        right = len(nums) - 1
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1
+```
+
+#### 628. 三个数的最大乘积
+
+```python
+class Solution:
+    def maximumProduct(self, nums) -> int:
+        nums.sort()
+        n = len(nums)
+        return max(nums[0]*nums[1]*nums[n-1], nums[n-1]*nums[n-2]*nums[n-3])
 ```
