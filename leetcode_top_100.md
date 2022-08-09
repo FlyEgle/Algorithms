@@ -2177,7 +2177,7 @@ class Solution:
         return slow
 ```
 
-#### 26. 删除有序数组中的重复项
+#### 26. [删除有序数组中的重复项](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/)
 
 ```python
 class Solution:
@@ -2196,7 +2196,7 @@ class Solution:
         return new_length
 ```
 
-#### 17. 电话号码的字母组合
+#### 17. [电话号码的字母组合](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/)
 
 ```python
 class Solution:
@@ -2233,7 +2233,7 @@ class Solution:
         return result
 ```
 
-#### 22. 括号生成
+#### 22. [括号生成](https://leetcode.cn/problems/generate-parentheses/)
 
 ```python
 class Solution:
@@ -2257,7 +2257,7 @@ class Solution:
         return ans
 ```
 
-#### 31. 下一个排列
+#### 31. [下一个排列](https://leetcode.cn/problems/next-permutation/)
 
 ```python
 class Solution:
@@ -2275,7 +2275,7 @@ class Solution:
             right -= 1
 ```
 
-#### 628. 三个数的最大乘积
+#### 628. [三个数的最大乘积](https://leetcode.cn/problems/maximum-product-of-three-numbers/)
 
 ```python
 class Solution:
