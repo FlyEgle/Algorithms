@@ -2284,3 +2284,38 @@ class Solution:
         n = len(nums)
         return max(nums[0]*nums[1]*nums[n-1], nums[n-1]*nums[n-2]*nums[n-3])
 ```
+
+#### 145. [二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
+
+```python
+class Solution:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return list()
+
+        res = []
+        stack = []
+        prev = None
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+
+            root = stack.pop()
+            if not root.right or root.right == prev:
+                """
+                两种情况，prev 标记上一次访问的是不是右子树
+                1. 如果root没有右子树，则直接添加当前节点
+                2. 如果右子树已经遍历过，则直接添加当前节点
+                """
+                res.append(root.val)
+                prev = root
+                root = None
+            else:
+                """
+                说明右子树还没遍历完，因此再把root压回来
+                """
+                stack.append(root)
+                root = root.right
+        return res
+```
