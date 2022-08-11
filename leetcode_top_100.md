@@ -2319,3 +2319,21 @@ class Solution:
                 root = root.right
         return res
 ```
+
+#### 爬N阶楼梯，每次最多可以爬M阶，M<=N，问有多少种走法 （pdd）
+```python
+# 递归
+def solution(n, m):
+    way = 0
+    if n == 0:
+        return 1
+
+    if (n >= m):
+        for i in range(1, m+1):
+            way += solution(n-i, m)
+
+    else:
+        way = solution(n, n)
+
+    return way 
+```
