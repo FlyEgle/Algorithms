@@ -2319,3 +2319,77 @@ class Solution:
                 root = root.right
         return res
 ```
+
+#### 146. [LRU缓存](https://leetcode.cn/problems/lru-cache/submissions/)
+```python
+class DListNode:
+    def __init__(self, key, val, prev=None, next=None):
+        self.key = key
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        """
+
+        head -> tail
+             <-
+        After insert a Node:
+        head -> Node1 -> tail
+             <-       <-
+        :param capacity:
+        """
+        self.hashmap = dict()
+        self.capcity = capacity
+        self.size = 0
+        self.head = DListNode(0, 0)
+        self.tail = DListNode(0, 0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def get(self, key: int) -> int:
+        if key not in self.hashmap:
+            return -1
+        node = self.hashmap[key]
+        self.moveToHead(node)
+        return node.val
+
+    def removeNode(self, node):
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+    def addToHead(self, node):
+        node.prev = self.head
+        node.next = self.head.next
+        self.head.next.prev = node
+        self.head.next = node
+
+    def moveToHead(self, node):
+        self.removeNode(node)
+        self.addToHead(node)
+
+    def removeTail(self):
+        node = self.tail.prev
+        self.removeNode(node)
+        return node
+
+    def put(self, key: int, value: int) -> None:
+        if key not in self.hashmap:
+            newNode = DListNode(key, value)
+            self.hashmap[key] = newNode
+            self.size += 1
+            self.addToHead(newNode)
+
+            if self.size > self.capcity:
+                removedNode = self.removeTail()
+                self.hashmap.pop(removedNode.key)
+                self.size -= 1
+        else:
+            curNode = self.hashmap[key]
+            curNode.val = value
+            self.moveToHead(curNode)
+
+
+```
