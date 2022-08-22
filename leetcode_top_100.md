@@ -2409,5 +2409,34 @@ class LRUCache:
             curNode.val = value
             self.moveToHead(curNode)
 
+```
 
+#### [48. 旋转图像](https://leetcode.cn/problems/rotate-image/)
+```python
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        # 左下角
+        row, colw = len(matrix), len(matrix[0])
+        
+        i = row - 1
+        j = 0
+        while i >=0 and j <= colw - 1:
+            if i == row - 1 and j == 0:
+                # continue 
+                i -= 1
+                j += 1
+            else:
+                
+                n = i
+                for k in range(j):
+                    matrix[i][k], matrix[row - k - 1][colw - i - 1] = matrix[row - k - 1][colw - i - 1], matrix[i][k]
+                    
+                i -= 1
+                j += 1
+
+        # 倒序
+        matrix.reverse()
 ```
