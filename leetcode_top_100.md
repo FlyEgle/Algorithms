@@ -677,6 +677,60 @@ class Solution(object):
             return [a,b-1]
 ```
 
+zzk: 这个地方我觉得还是拆成寻找左边界和右边界好点
+
+参考： https://zhuanlan.zhihu.com/p/79553968
+
+```python
+class Solution:
+    def searchRange(self, nums, target: int):
+        left_border = self.getLeftBorder(nums, target)
+        right_border = self.getRightBorder(nums, target)
+
+        if left_border == len(nums) or nums[left_border] != target:
+            return [-1, -1]
+        else:
+            return [left_border, right_border]
+
+    def searchLeft(self, nums, target): 
+        left = 0
+        right = len(nums) # 注意这里我们right是len(nums)，所以我们搜索区间定为 [left, right)
+
+        while left < right: 
+            mid = (left + right) // 2
+            """
+            我们排出了 mid 这一项，因此分成两个区间去搜索
+            [left, mid) [mid+1, right)
+            """
+            if nums[mid] == target: 
+                # 继续在左半边搜索
+                right = mid 
+            if nums[mid] > target: 
+                right = mid
+            if nums[mid] < target: 
+                left = mid + 1
+        return left
+
+    def searchRight(self, nums, target): 
+        left = 0
+        right = len(nums)
+
+        while left < right: 
+            mid = (left + right) // 2
+            if nums[mid] == target: 
+                # 继续在右半边搜索
+                left = mid + 1
+            if nums[mid] > target: 
+                right = mid
+            if nums[mid] < target: 
+                left = mid + 1
+        # 我们看第一个if判断，mid == target的时候，left = mid + 1。
+        # 然后此时退出了while循环，left就越界了，而left-1则可能是target
+        return left - 1
+
+```
+
+
 #### 215. 数组中的第K个最大元素
 
 ```python
