@@ -1,7 +1,11 @@
 ### LeetCode Top 100
 
 ##### 1. 两数之和
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
 
+你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。
+
+你可以按任意顺序返回答案。
 ```python
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -15,7 +19,11 @@ class Solution:
 ```
 
 ##### 2. 两数相加
+给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
 
+请你将两个数相加，并以相同形式返回一个表示和的链表。
+
+你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 ```python
 # class ListNode(object):
 #     def __init__(self, val=0, next=None):
@@ -45,6 +53,7 @@ class Solution(object):
 ```
 
 ##### 3. 无重复字符的最长子串
+给定一个字符串 s ，请你找出其中不含有重复字符的 最长连续子字符串 的长度。
 
 ```python
 class Solution:
@@ -65,7 +74,13 @@ class Solution:
 ```
 
 ##### 20. 有效的括号
+给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
 
+有效字符串需满足：
+
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+每个右括号都有一个对应的相同类型的左括号。
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -101,7 +116,7 @@ class Solution:
 ```
 
 #### 21. 合并两个有序链表
-
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -132,7 +147,7 @@ class Solution:
 ```
 
 #### 160. 相交链表
-
+给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -169,7 +184,11 @@ class Solution:
 ```
 
 #### 69. x的平方根
+给你一个非负整数 x ，计算并返回 x 的 算术平方根 。
 
+由于返回类型是整数，结果只保留 整数部分 ，小数部分将被 舍去 。
+
+注意：不允许使用任何内置指数函数和算符，例如 pow(x, 0.5) 或者 x ** 0.5 。
 ```python
 class Solution:
     def mySqrt(self, x: int) -> int:
@@ -187,7 +206,9 @@ class Solution:
 ```
 
 #### 744. 寻找比目标字母大的最小字母
+给你一个字符数组 letters，该数组按非递减顺序排序，以及一个字符 target。letters 里至少有两个不同的字符。
 
+返回 letters 中大于 target 的最小的字符。如果不存在这样的字符，则返回 letters 的第一个字符。
 ```python
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
@@ -207,7 +228,7 @@ class Solution:
 ```
 
 #### 206. 反转链表
-
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -229,7 +250,11 @@ class Solution:
 ```
 
 #### 141. 环形链表
+给你一个链表的头节点 head ，判断链表中是否有环。
 
+如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。
+
+如果链表中存在环 ，则返回 true 。 否则，返回 false 。
 ```python
 # Definition for singly-linked list.
 # class ListNode:
@@ -325,7 +350,11 @@ class Solution:
 ```
 
 #### 88. 合并两个有序数组
+给你两个按 非递减顺序 排列的整数数组 nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。
 
+请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。
+
+注意：最终，合并后数组不应由函数返回，而是存储在数组 nums1 中。为了应对这种情况，nums1 的初始长度为 m + n，其中前 m 个元素表示应合并的元素，后 n 个元素为 0 ，应忽略。nums2 的长度为 n 。
 ```python
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
@@ -351,7 +380,10 @@ class Solution:
 ```
 
 #### 53.最大子数组和
+给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 
+子数组
+是数组中的一个连续部分。
 ```python
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
@@ -368,7 +400,7 @@ class Solution:
 ```
 
 #### 226. 翻转二叉树
-
+给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。
 ```python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -427,19 +459,20 @@ def quick_sort(lists,i,j):
     while i < j:
         while i < j and lists[j] >= pivot:
             j -= 1
-        lists[i]=lists[j]
         while i < j and lists[i] <=pivot:
             i += 1
-        lists[j]=lists[i]
+        lists[j], lists[i] = lists[i], lists[j]
+    
     lists[j] = pivot
-  
     quick_sort(lists,low,i-1)
     quick_sort(lists,i+1,high)
     return lists
 ```
 
 #### 15. 三数之和
+给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请你返回所有和为 0 且不重复的三元组。
 
+注意：答案中不可以包含重复的三元组。
 ```python
 class Solution:
     def threeSum(self, nums: [int]) -> [[int]]:
@@ -468,7 +501,11 @@ class Solution:
 ```
 
 #### 16. 最接近的三数之和
+给你一个长度为 n 的整数数组 nums 和 一个目标值 target。请你从 nums 中选出三个整数，使它们的和与 target 最接近。
 
+返回这三个数的和。
+
+假定每组输入只存在恰好一个解。
 ```python
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
@@ -601,7 +638,9 @@ class Solution:
 ```
 
 #### 14. 最长公共前缀
+编写一个函数来查找字符串数组中的最长公共前缀。
 
+如果不存在公共前缀，返回空字符串 ""。
 ```python
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
