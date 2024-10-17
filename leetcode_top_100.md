@@ -656,7 +656,11 @@ class Solution:
 ```
 
 #### 34. 在排序数组中查找元素的第一个和最后一个位置
+给你一个按照非递减顺序排列的整数数组 nums，和一个目标值 target。请你找出给定目标值在数组中的开始位置和结束位置。
 
+如果数组中不存在目标值 target，返回 [-1, -1]。
+
+你必须设计并实现时间复杂度为 O(log n) 的算法解决此问题。
 ```python
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
@@ -771,7 +775,11 @@ class Solution:
 
 
 #### 215. 数组中的第K个最大元素
+给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
 
+请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+
+你必须设计并实现时间复杂度为 O(n) 的算法解决此问题。
 ```python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -793,7 +801,9 @@ class Solution:
 ```
 
 #### 234. 回文链表
-
+给你一个单链表的头节点 head ，请你判断该链表是否为
+回文链表
+。如果是，返回 true ；否则，返回 false 。
 ```python
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
@@ -840,7 +850,7 @@ class Solution:
 ```
 
 #### 338. 比特位计数
-
+给你一个整数 n ，对于 0 <= i <= n 中的每个 i ，计算其二进制表示中 1 的个数 ，返回一个长度为 n + 1 的数组 ans 作为答案。
 ```python
 # fallback
 class Solution:
@@ -875,7 +885,11 @@ class Solution:
 ```
 
 #### 543. 二叉树的直径
+给你一棵二叉树的根节点，返回该树的 直径 。
 
+二叉树的 直径 是指树中任意两个节点之间最长路径的 长度 。这条路径可能经过也可能不经过根节点 root 。
+
+两节点之间路径的 长度 由它们之间边数表示。
 ```python
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -903,7 +917,13 @@ class Solution:
 ```
 
 #### 617. 合并二叉树
+给你两棵二叉树： root1 和 root2 。
 
+想象一下，当你将其中一棵覆盖到另一棵之上时，两棵树上的一些节点将会重叠（而另一些不会）。你需要将这两棵树合并成一棵新二叉树。合并的规则是：如果两个节点重叠，那么将这两个节点的值相加作为合并后节点的新值；否则，不为 null 的节点将直接作为新二叉树的节点。
+
+返回合并后的二叉树。
+
+注意: 合并过程必须从两个树的根节点开始。
 ```python
 class Solution(object):
     def mergeTrees(self, t1, t2):
@@ -919,7 +939,9 @@ class Solution(object):
 ```
 
 #### 461. 汉明距离
+两个整数之间的 汉明距离 指的是这两个数字对应二进制位不同的位置的数目。
 
+给你两个整数 x 和 y，计算并返回它们之间的汉明距离。
 ```python
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
@@ -927,7 +949,11 @@ class Solution:
 ```
 
 #### 121. 买卖股票的最佳时机
+给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
 
+你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
+
+返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
 ```python
 # 动态规划
 class Solution:
@@ -956,7 +982,11 @@ class Solution:
 ```
 
 #### 122. 买卖股票的最佳时机 II
+给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。
 
+在每一天，你可以决定是否购买和/或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。
+
+返回 你能获得的 最大 利润 。
 ```python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
@@ -981,7 +1011,7 @@ class Solution:
 ```
 
 #### 101. 对称二叉树
-
+给你一个二叉树的根节点 root ， 检查它是否轴对称。
 ```python
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
@@ -1009,7 +1039,9 @@ class Solution:
 ```
 
 #### 169. 多数元素
+给定一个大小为 n 的数组 nums ，返回其中的多数元素。多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素。
 
+你可以假设数组是非空的，并且给定的数组总是存在多数元素。
 ```python
 # fallback
 class Solution:
@@ -1027,7 +1059,9 @@ class Solution:
 ```
 
 #### 560. 和为K的子数组
+给你一个整数数组 nums 和一个整数 k ，请你统计并返回 该数组中和为 k 的子数组的个数 。
 
+子数组是数组中元素的连续非空序列。
 ```python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
@@ -1050,7 +1084,9 @@ class Solution:
 ```
 
 #### 279. 完全平方数
+给你一个整数 n ，返回 和为 n 的完全平方数的最少数量 。
 
+完全平方数 是一个整数，其值等于另一个整数的平方；换句话说，其值等于一个整数自乘的积。例如，1、4、9 和 16 都是完全平方数，而 3 和 11 不是。
 ```python
 # 背包问题，动态规划
 class Solution:
@@ -1063,7 +1099,11 @@ class Solution:
 ```
 
 #### 322. 零钱兑换
+给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。
 
+计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回 -1 。
+
+你可以认为每种硬币的数量是无限的。
 ```python
 # low performance
 class Solution:
@@ -1109,7 +1149,9 @@ class Solution:
 ```
 
 #### 581. 最短无序连续子数组
+给你一个整数数组 nums ，你需要找出一个 连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
 
+请你找出符合题意的 最短 子数组，并输出它的长度。
 ```python
 # fallback
 class Solution:
@@ -1160,7 +1202,11 @@ class Solution:
 ```
 
 #### 647. 回文子串
+给你一个字符串 s ，请你统计并返回这个字符串中 回文子串 的数目。
 
+回文字符串 是正着读和倒过来读一样的字符串。
+
+子字符串 是字符串中的由连续字符组成的一个序列。
 ```python
 # 动态规划
 class Solution:
@@ -1205,7 +1251,7 @@ class Solution:
 ```
 
 ##### 739. 每日温度
-
+给定一个整数数组 temperatures ，表示每天的温度，返回一个数组 answer ，其中 answer[i] 是指对于第 i 天，下一个更高温度出现在几天后。如果气温在这之后都不会升高，请在该位置用 0 来代替。
 ```python
 # fallback 会超出时间限制
 class Solution:
@@ -1240,7 +1286,8 @@ class Solution:
 ```
 
 #### 5. 最长回文子串
-
+给你一个字符串 s，找到 s 中最长的 
+回文子串。
 ```python
 # 动态规划
 class Solution:
@@ -1302,7 +1349,13 @@ class Solution:
 ```
 
 #### 11. 盛最多水的容器
+给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
 
+找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+
+返回容器可以储存的最大水量。
+
+说明：你不能倾斜容器。
 ```python
 class Solution:
     def maxArea(self, height: List[int]) -> int:
@@ -1320,7 +1373,7 @@ class Solution:
 ```
 
 #### 56. 合并区间
-
+以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
 ```python
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
@@ -1398,7 +1451,9 @@ plt.imshow(img)
 ```
 
 #### 198. 打家劫舍
+你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
 
+给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
 ```python
 class Solution:
     def rob(self, nums: List[int]) -> int:
@@ -1417,7 +1472,9 @@ class Solution:
 ```
 
 #### 128. 最长连续序列
+给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
 
+请你设计并实现时间复杂度为 O(n) 的算法解决此问题。
 ```python
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
@@ -1437,9 +1494,34 @@ class Solution:
 
         return longest_streak
 ```
+```python
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        hash = {key:key for key in nums}
+        res = 0
+        while hash:
+            key, value = hash.popitem()
+            up = key + 1
+            down = key - 1
+            length = 1
+            while up in hash:
+                length += 1
+                del hash[up]
+                up += 1
+            while down in hash:
+                length += 1
+                del hash[down]
+                down -= 1
+            res = max(res, length)
+        return res
+```
 
 #### 200. 岛屿数量
+给你一个由 '1'（陆地）和 '0'（水）组成的的二维网格，请你计算网格中岛屿的数量。
 
+岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。
+
+此外，你可以假设该网格的四条边均被水包围。
 ```python
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
@@ -1490,7 +1572,11 @@ class Solution:
 ```
 
 #### 75. 颜色分类
+给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地 对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
 
+我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+
+必须在不使用库内置的 sort 函数的情况下解决这个问题。
 ```python
 # 单指针
 class Solution:
@@ -1530,7 +1616,9 @@ class Solution:
 ```
 
 #### 139. 单词拆分
+给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s 则返回 true。
 
+注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。  
 ```python
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
@@ -1550,7 +1638,11 @@ class Solution:
 ```
 
 #### 39. 组合总和
+给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，找出 candidates 中可以使数字和为目标数 target 的 所有 不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合。
 
+candidates 中的 同一个 数字可以 无限制重复被选取 。如果至少一个数字的被选数量不同，则两种组合是不同的。 
+
+对于给定的输入，保证和为 target 的不同组合数少于 150 个。
 ```python
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -1576,6 +1668,8 @@ class Solution:
 ```
 
 #### 148. 排序链表
+给你链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。
+
 
 ```python
 # 额外空间解法
@@ -1696,7 +1790,7 @@ class Solution:
 ```
 
 #### 46. 全排列
-
+给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
 ```python
 # 回溯 + DFS
 class Solution:
@@ -1728,7 +1822,10 @@ class Solution:
 ```
 
 #### 114. 二叉树展开为链表
+给你二叉树的根结点 root ，请你将它展开为一个单链表：
 
+展开后的单链表应该同样使用 TreeNode ，其中 right 子指针指向链表中下一个结点，而左子指针始终为 null 。
+展开后的单链表应该与二叉树 先序遍历 顺序相同。
 ```python
 class Solution:
     def flatten(self, root: TreeNode) -> None:
@@ -1749,7 +1846,13 @@ class Solution:
 ```
 
 #### 72. 编辑距离
+给你两个单词 word1 和 word2， 请返回将 word1 转换成 word2 所使用的最少操作数  。
 
+你可以对一个单词进行如下三种操作：
+
+插入一个字符
+删除一个字符
+替换一个字符
 ```python
 # 动态规划+自底向上
 class Solution:
@@ -1774,8 +1877,27 @@ class Solution:
 ```
 
 #### 239. 滑动窗口的最大值
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
 
+返回 滑动窗口中的最大值 。
 ```python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        # 注意 Python 默认的优先队列是小根堆
+        q = [(-nums[i], i) for i in range(k)]
+        heapq.heapify(q)
+
+        ans = [-q[0][0]]
+        for i in range(k, n):
+            heapq.heappush(q, (-nums[i], i))
+            while q[0][1] <= i - k:
+                heapq.heappop(q)
+            ans.append(-q[0][0])
+        
+        return ans
+
+
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List:
         n = len(nums)
@@ -1798,7 +1920,7 @@ class Solution:
 ```
 
 #### 42. 接雨水
-
+给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 ```python
 # 双指针
 class Solution:
@@ -1820,7 +1942,9 @@ class Solution:
 ```
 
 #### 23. 合并K个升序链表
+给你一个链表数组，每个链表都已经按升序排列。
 
+请你将所有链表合并到一个升序链表中，返回合并后的链表。
 ```python
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
@@ -1860,6 +1984,10 @@ class Solution:
 ```
 
 #### 4. 寻找两个正序数组的中位数
+给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。
+
+算法的时间复杂度应该为 O(log (m+n)) 。
+
 
 ```python
 # 暴力法
@@ -1903,7 +2031,9 @@ class Solution:
 ```
 
 #### 105. 从前序与中序遍历序列构造二叉树
+给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序遍历，请构造二叉树并返回其根节点。
 
+ 
 ```python
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
@@ -1935,7 +2065,13 @@ class Solution:
 ```
 
 #### 547. 省份数量
+有 n 个城市，其中一些彼此相连，另一些没有相连。如果城市 a 与城市 b 直接相连，且城市 b 与城市 c 直接相连，那么城市 a 与城市 c 间接相连。
 
+省份 是一组直接或间接相连的城市，组内不含其他没有相连的城市。
+
+给你一个 n x n 的矩阵 isConnected ，其中 isConnected[i][j] = 1 表示第 i 个城市和第 j 个城市直接相连，而 isConnected[i][j] = 0 表示二者不直接相连。
+
+返回矩阵中 省份 的数量。
 ```python
 class DSU:
     def __init__(self, N):
@@ -1968,7 +2104,11 @@ class Solution:
 ```
 
 #### 367. 有效的完全平方数
+给你一个正整数 num 。如果 num 是一个完全平方数，则返回 true ，否则返回 false 。
 
+完全平方数 是一个可以写成某个整数的平方的整数。换句话说，它可以写成某个整数和自身的乘积。
+
+不能使用任何内置的库函数，如  sqrt 。
 ```python
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
@@ -1986,7 +2126,11 @@ class Solution:
 ```
 
 #### 7. 整数反转
+给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
 
+如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+
+假设环境不允许存储 64 位整数（有符号或无符号）。
 ```python
 class Solution:
     def reverse(self, x: int) -> int:
@@ -2010,15 +2154,20 @@ class Solution:
 ```
 
 #### 55. 跳跃游戏
+给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。
 
+判断你是否能够到达最后一个下标，如果可以，返回 true ；否则，返回 false 。
 ```python
 class Solution:
-    def canJump(self, nums):
-        max_i = 0
-        for i, jump in enumerate(nums):
-            if max_i >= i and i + jump > max_i:
-                max_i = i + jump 
-            return max_i >= i
+    def canJump(self, nums: List[int]) -> bool:
+        n, rightmost = len(nums), 0
+        for i in range(n):
+            if i <= rightmost:
+                rightmost = max(rightmost, i + nums[i])
+                if rightmost >= n - 1:
+                    return True
+        return False
+
 ```
 
 #### 134. 加油站
